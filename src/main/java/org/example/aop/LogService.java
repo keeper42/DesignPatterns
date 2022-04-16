@@ -1,4 +1,4 @@
-package org.example;
+package org.example.aop;
 
 /**
  * @author lijiafan
@@ -22,7 +22,7 @@ public class LogService {
 
     private static Logger logger = LoggerFactory.getLogger(LogService.class);
 
-    @Pointcut("@annotation(org.example.MethodLog)")
+    @Pointcut("@annotation(org.example.aop.MethodLog)")
     public void methodCachePointcut() {}
 
     /**

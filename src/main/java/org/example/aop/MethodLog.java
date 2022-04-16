@@ -1,4 +1,4 @@
-package org.example;
+package org.example.aop;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

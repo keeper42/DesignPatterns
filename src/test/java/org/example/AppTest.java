@@ -1,9 +1,15 @@
 package org.example;
 
+import org.example.aop.AopConfig;
+import org.example.builder.MeatLoversPizzaBuilder;
+import org.example.builder.PizzaBuilder;
+import org.example.builder.VeggieLoversPizzaBuilder;
+import org.example.decorator.Cheese;
+import org.example.decorator.Olives;
+import org.example.decorator.ThincrustPizza;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
@@ -14,11 +20,8 @@ public class AppTest {
 
     private static Logger logger = LoggerFactory.getLogger(AppTest.class);
 
-    @Autowired
-    private PizzaService pizzaService;
-
     @Test
-    public void testInit() {
+    public void init() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
         Pizza pizza = context.getBean(Pizza.class);
         pizza.bake();
@@ -27,7 +30,7 @@ public class AppTest {
     }
 
     @Test
-    public void testBuilder() {
+    public void builder() {
         PizzaBuilder veggieBuilder = new VeggieLoversPizzaBuilder();
         // build a veggiePizza.
         Pizza veggie = veggieBuilder.addSauce().addCheese().addOlives().addTomatoes().addSausage().build();
@@ -45,7 +48,14 @@ public class AppTest {
         meat.cut();
         meat.box();
         logger.info(meat.toString());
+    }
 
+    @Test
+    public void decorator() {
+        ThincrustPizza pizza = new ThincrustPizza();
+        Cheese cheese = new Cheese(pizza);
+        Olives olives = new Olives(cheese);
+        System.out.println(olives.getDescription() + " " + olives.cost());
     }
 
 }

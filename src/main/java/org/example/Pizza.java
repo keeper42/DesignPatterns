@@ -3,6 +3,7 @@ package org.example;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.aop.MethodLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,13 +20,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-public class Pizza {
+public class Pizza extends BasicPizza{
 
     private static Logger logger = LoggerFactory.getLogger(Pizza.class);
 
     protected String name;
 
     protected List<String> toppings;
+
+	@Override
+	public double cost() {
+		return 1;
+	}
 
     public void prepare() {
         for (String topping : toppings) {

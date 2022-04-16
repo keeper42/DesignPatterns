@@ -1,4 +1,6 @@
-package org.example;
+package org.example.builder;
+
+import org.example.Pizza;
 
 import java.util.ArrayList;
 import java.util.List;
