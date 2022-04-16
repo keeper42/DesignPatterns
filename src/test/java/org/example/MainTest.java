@@ -1,5 +1,6 @@
 package org.example;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.aop.AopConfig;
 import org.example.builder.MeatLoversPizzaBuilder;
 import org.example.builder.PizzaBuilder;
@@ -12,13 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+@Slf4j
+public class MainTest {
 
-/**
- * Unit test for simple App.
- */
-public class AppTest {
-
-    private static Logger logger = LoggerFactory.getLogger(AppTest.class);
+    private static Logger logger = LoggerFactory.getLogger(MainTest.class);
 
     @Test
     public void init() {

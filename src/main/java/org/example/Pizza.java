@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-public class Pizza extends BasicPizza{
+public class Pizza {
 
     private static Logger logger = LoggerFactory.getLogger(Pizza.class);
 
@@ -28,7 +28,6 @@ public class Pizza extends BasicPizza{
 
     protected List<String> toppings;
 
-	@Override
 	public double cost() {
 		return 1;
 	}
