@@ -5,6 +5,9 @@ import org.example.adapter.MallardDuck;
 import org.example.adapter.TurkeyAdapter;
 import org.example.adapter.WildTurkey;
 import org.example.aop.AopConfig;
+import org.example.bridge.GenericRemote;
+import org.example.bridge.SpecialRemote;
+import org.example.bridge.TVFactory;
 import org.example.builder.MeatLoversPizzaBuilder;
 import org.example.builder.PizzaBuilder;
 import org.example.builder.VeggieLoversPizzaBuilder;
@@ -14,6 +17,7 @@ import org.example.decorator.ThincrustPizza;
 import org.example.interfaces.Duck;
 import org.example.interfaces.Turkey;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -73,6 +77,26 @@ public class MainTest {
         System.out.println("\nThe TurkeyDuck says...");
         turkeyDuck.quack();
         turkeyDuck.fly();
+    }
+
+    @Test
+    public void bridge() {
+        TVFactory tvFactory = new TVFactory();
+        SpecialRemote remoteSony = new SpecialRemote(tvFactory);
+        System.out.println("Connect special remote to the TV");
+        remoteSony.setTV("Sony");
+        remoteSony.on();
+        remoteSony.up();
+        remoteSony.down();
+        remoteSony.off();
+
+        GenericRemote remoteLG = new GenericRemote(tvFactory);
+        System.out.println("Connect generic remote to the TV");
+        remoteLG.setTV("LG");
+        remoteLG.on();
+        remoteLG.nextChannel();
+        remoteLG.prevChannel();
+        remoteLG.off();
     }
 
 }
