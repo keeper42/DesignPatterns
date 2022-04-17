@@ -1,6 +1,6 @@
 package org.example.factory;
 
-import org.example.PizzaFactory;
+import org.example.interfaces.PizzaFactory;
 import org.example.materials.Cheese;
 import org.example.materials.Clams;
 import org.example.materials.Dough;

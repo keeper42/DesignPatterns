@@ -1,6 +1,9 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.adapter.MallardDuck;
+import org.example.adapter.TurkeyAdapter;
+import org.example.adapter.WildTurkey;
 import org.example.aop.AopConfig;
 import org.example.builder.MeatLoversPizzaBuilder;
 import org.example.builder.PizzaBuilder;
@@ -8,6 +11,8 @@ import org.example.builder.VeggieLoversPizzaBuilder;
 import org.example.decorator.Cheese;
 import org.example.decorator.Olives;
 import org.example.decorator.ThincrustPizza;
+import org.example.interfaces.Duck;
+import org.example.interfaces.Turkey;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +59,20 @@ public class MainTest {
         Cheese cheese = new Cheese(pizza);
         Olives olives = new Olives(cheese);
         System.out.println(olives.getDescription() + " " + olives.cost());
+    }
+
+    @Test
+    public void adapter() {
+        Turkey turkey = new WildTurkey();
+        Duck turkeyDuck = new TurkeyAdapter(turkey);
+
+        System.out.println("The Turkey says...");
+        turkey.gobble();
+        turkey.fly();
+
+        System.out.println("\nThe TurkeyDuck says...");
+        turkeyDuck.quack();
+        turkeyDuck.fly();
     }
 
 }

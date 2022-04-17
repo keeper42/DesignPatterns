@@ -2,7 +2,7 @@ package org.example.factory.type;
 
 import lombok.AllArgsConstructor;
 import org.example.factory.Pizza;
-import org.example.PizzaFactory;
+import org.example.interfaces.PizzaFactory;
 
 @AllArgsConstructor
 public class ClamPizza extends Pizza {

@@ -1,9 +1,8 @@
 package org.example.factory.type;
 
 import lombok.AllArgsConstructor;
-import org.example.PizzaFactory;
+import org.example.interfaces.PizzaFactory;
 import org.example.factory.Pizza;
-import org.example.materials.Cheese;
 
 @AllArgsConstructor
 public class CheesePizza extends Pizza {
