@@ -16,6 +16,8 @@ import org.example.decorator.Olives;
 import org.example.decorator.ThincrustPizza;
 import org.example.interfaces.Duck;
 import org.example.interfaces.Turkey;
+import org.example.singleton.DCL;
+import org.example.singleton.Singleton1;
 import org.junit.Test;
 import org.junit.experimental.theories.suppliers.TestedOn;
 import org.slf4j.Logger;
@@ -97,6 +99,15 @@ public class MainTest {
         remoteLG.nextChannel();
         remoteLG.prevChannel();
         remoteLG.off();
+    }
+
+    @Test
+    public void singleton() {
+        DCL instance = new DCL();
+        instance.getInstance();
+        System.out.println(instance);
+        instance.getInstance();
+        System.out.println(instance);
     }
 
 }
